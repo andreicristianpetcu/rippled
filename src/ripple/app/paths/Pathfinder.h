@@ -176,6 +176,7 @@ private:
 
     Account mSrcAccount;
     Account mDstAccount;
+    Account mEffectiveDst;
     STAmount mDstAmount;
     Currency mSrcCurrency;
     boost::optional<Account> mSrcIssuer;
