@@ -175,7 +175,7 @@ Pathfinder::Pathfinder (
     STAmount const& saDstAmount)
     :   mSrcAccount (uSrcAccount),
         mDstAccount (uDstAccount),
-        mEffectiveDst ((saDstAmount.getIssuer() == xrpAccount ()) ?
+        mEffectiveDst (isXRP(saDstAmount.getIssuer ()) ?
             uDstAccount : saDstAmount.getIssuer ()),
         mDstAmount (saDstAmount),
         mSrcCurrency (uSrcCurrency),
@@ -195,7 +195,7 @@ Pathfinder::Pathfinder (
     STAmount const& saDstAmount)
     :   mSrcAccount (uSrcAccount),
         mDstAccount (uDstAccount),
-        mEffectiveDst ((saDstAmount.getIssuer() == xrpAccount ()) ?
+        mEffectiveDst (isXRP(saDstAmount.getIssuer ()) ?
             uDstAccount : saDstAmount.getIssuer ()),
         mDstAmount (saDstAmount),
         mSrcCurrency (uSrcCurrency),
@@ -566,11 +566,6 @@ STPathSet Pathfinder::getBestPaths (
     assert (fullLiquidityPath.empty ());
     const bool issuerIsSender = isXRP (mSrcCurrency) || (srcIssuer == mSrcAccount);
 
-    if (issuerIsSender &&
-            (mCompletePaths.size () <= maxPaths) &&
-            (extraPaths.size() == 0))
-        return mCompletePaths;
-
     std::vector <PathRank> extraPathRanks;
     rankPaths (maxPaths, extraPaths, extraPathRanks);
 
@@ -901,7 +896,8 @@ void Pathfinder::addLink (
     bool const bOnXRP = uEndCurrency.isZero ();
 
     // Does pathfinding really need to get this to
-    // a gateway rather than the real destination
+    // a gateway (the issuer of the destination amount)
+    // rather than the ultimate destination?
     bool const hasEffectiveDestination = mEffectiveDst != mDstAccount;
 
     WriteLog (lsTRACE, Pathfinder) << "addLink< flags="
