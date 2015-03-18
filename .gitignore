@@ -65,10 +65,10 @@ DerivedData
 *.hmap
 
 # Eclipse CDT project files
-.cproject
-.externalToolBuilders
-.project
-.settings
+/.cproject
+/.externalToolBuilders
+/.project
+/.settings
 
 # Intel Parallel Studio 2013 XE
 My Amplifier XE Results - RippleD
