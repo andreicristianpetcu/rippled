@@ -85,3 +85,6 @@ rippled-build.log
 
 # Profiling data
 gmon.out
+
+# ignore vagrant files
+.vagrant

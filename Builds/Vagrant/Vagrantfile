@@ -1,0 +1,34 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  config.vm.box = "ubuntu1404"
+
+  config.vm.provider "virtualbox" do |v|
+    v.memory = 2048
+  end
+
+  config.vm.synced_folder "../../", "/src"
+
+  $script = <<-SCRIPT
+    #!/bin/bash
+    apt-get update
+    apt-get -y upgrade
+    apt-get -y install git scons pkg-config protobuf-compiler libprotobuf-dev libssl-dev
+    sudo apt-get install python-software-properties
+    echo "deb [arch=amd64] http://mirrors.ripple.com/ubuntu/ trusty stable contrib" | sudo tee /etc/apt/sources.list.d/ripple.list 
+    wget -O- -q http://mirrors.ripple.com/mirrors.ripple.com.gpg.key | sudo apt-key add -
+    apt-get -y update
+    apt-get -y install juju juju-core linux-headers-generic linux-headers-virtual linux-image-virtual linux-virtual
+    apt-get -y install libboost-all-dev
+    cd /src/ && scons build/rippled
+    cp /src/build/rippled rippled && strip rippled
+    cp /src/doc/rippled-example.cfg rippled.cfg
+  SCRIPT
+
+  config.vm.provision :shell, :inline => $script
+
+end
