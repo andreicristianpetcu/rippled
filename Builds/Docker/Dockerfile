@@ -27,4 +27,4 @@ RUN cp src/doc/rippled-example.cfg rippled.cfg
 RUN rm -r src
 
 # launch rippled when launching the container
-ENTRYPOINT ./rippled
+ENTRYPOINT ./rippled --net
