@@ -20,14 +20,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     #!/bin/bash
     apt-get update
     apt-get -y upgrade
-    apt-get -y install git scons pkg-config protobuf-compiler libprotobuf-dev libssl-dev
+    apt-get -y install git scons pkg-config protobuf-compiler libprotobuf-dev libssl-dev tmux
     apt-get install python-software-properties
-    echo "deb [arch=amd64] http://mirrors.ripple.com/ubuntu/ trusty stable contrib" | sudo tee /etc/apt/sources.list.d/ripple.list 
-    wget -O- -q http://mirrors.ripple.com/mirrors.ripple.com.gpg.key | sudo apt-key add -
+    echo "deb [arch=amd64] http://mirrors.ripple.com/ubuntu/ trusty stable contrib" | tee /etc/apt/sources.list.d/ripple.list 
+    wget -O- -q http://mirrors.ripple.com/mirrors.ripple.com.gpg.key | apt-key add -
     apt-get -y update
-    sudo apt-get install build-essential g++ python-dev autotools-dev libicu-dev build-essential libbz2-dev 
-    # apt-get -y install juju juju-core linux-headers-generic linux-headers-virtual linux-image-virtual linux-virtual
-    # apt-get -y install libboost-all-dev 
+    apt-get install build-essential g++ python-dev autotools-dev libicu-dev build-essential libbz2-dev 
     apt-get install -y boost-all-dev
     cd /src/ && scons build/rippled
     cd /
