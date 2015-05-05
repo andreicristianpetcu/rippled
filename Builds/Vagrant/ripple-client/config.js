@@ -16,8 +16,8 @@ var Options = {
     local_signing: true,
 
     servers: [
-      { host: 's-west.ripple.com', port: 443, secure: true },
-      { host: 's-east.ripple.com', port: 443, secure: true }
+      { host: 'local.s-west.ripple.com', port: 6006, secure: false },
+      { host: 'local.s-east.ripple.com', port: 6006, secure: false }
     ],
 
     connection_offset: 0,
