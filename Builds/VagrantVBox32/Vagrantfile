@@ -26,7 +26,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     apt-get -y upgrade
     apt-get -y install git scons pkg-config protobuf-compiler libprotobuf-dev libssl-dev tmux flip
     apt-get install python-software-properties
-    echo "deb [arch=amd64] http://mirrors.ripple.com/ubuntu/ trusty stable contrib" | tee /etc/apt/sources.list.d/ripple.list
+    echo "deb [arch=i386] http://mirrors.ripple.com/ubuntu/ trusty stable contrib" | tee /etc/apt/sources.list.d/ripple.list
     wget -O- -q http://mirrors.ripple.com/mirrors.ripple.com.gpg.key | apt-key add -
     apt-get -y update
     apt-get install -y build-essential g++ python-dev autotools-dev libicu-dev build-essential libbz2-dev
@@ -39,7 +39,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     cp /src/Builds/Vagrant/rippled.cfg /etc/ripple/rippled.cfg
     mkdir -p /root/.config/ripple/
     cp /src/Builds/Vagrant/rippled.cfg /root/.config/ripple/rippled.cfg
-    cp /vagrant/init.d_rippled /etc/init.d/rippled
+    cp /src/Builds/Vagrant/init.d_rippled /etc/init.d/rippled
     chmod +x /etc/init.d/rippled
     flip -u /etc/init.d/rippled
     service rippled start
