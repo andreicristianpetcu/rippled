@@ -45,7 +45,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     flip -u /etc/init.d/rippled
 	flip -u /root/.config/ripple/rippled.cfg
 	flip -u /etc/ripple/rippled.cfg
-    service rippled start
+	#service rippled start
   SCRIPT
 
   config.vm.provision :shell, :inline => $script
@@ -60,31 +60,31 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     $rippleclient = <<-SCRIPT
       #!/bin/bash
 
-      sed -i '/ripple.com/d' /etc/hosts
-      echo "127.0.0.1 local.ripple.com" | tee -a /etc/hosts
-      echo "127.0.0.1 www.local.ripple.com" | tee -a /etc/hosts
-      echo "127.0.0.1 ripple.local.ripple.com" | tee -a /etc/hosts
-      echo "127.0.0.1 history.ripple.com" | tee -a /etc/hosts
-      echo "127.0.0.1 api.ripplecharts.com" | tee -a /etc/hosts
-      echo "127.0.0.1 local.id.ripple.com" | tee -a /etc/hosts
+      # sed -i '/ripple.com/d' /etc/hosts
+      # echo "127.0.0.1 local.ripple.com" | tee -a /etc/hosts
+      # echo "127.0.0.1 www.local.ripple.com" | tee -a /etc/hosts
+      # echo "127.0.0.1 ripple.local.ripple.com" | tee -a /etc/hosts
+      # echo "127.0.0.1 history.ripple.com" | tee -a /etc/hosts
+      # echo "127.0.0.1 api.ripplecharts.com" | tee -a /etc/hosts
+      # echo "127.0.0.1 local.id.ripple.com" | tee -a /etc/hosts
 
-      echo "127.0.0.1 id.ripple.com" | tee -a /etc/hosts
+      # echo "127.0.0.1 id.ripple.com" | tee -a /etc/hosts
 
-      echo "127.0.0.1 s-west.ripple.com" | tee -a /etc/hosts
-      echo "127.0.0.1 s-east.ripple.com" | tee -a /etc/hosts
+      # echo "127.0.0.1 s-west.ripple.com" | tee -a /etc/hosts
+      # echo "127.0.0.1 s-east.ripple.com" | tee -a /etc/hosts
 
-      echo "127.0.0.1 auth1.ripple.com" | tee -a /etc/hosts
+      # echo "127.0.0.1 auth1.ripple.com" | tee -a /etc/hosts
 
-      apt-get install nodejs npm -y
-      rm -rf /usr/local/bin/node
-      sudo ln -s /usr/bin/nodejs /usr/local/bin/node
-      cd /
-      git clone https://github.com/ripple/ripple-client.git
-      cd ripple-client/
-      git checkout d74f95d
-      npm install -g grunt-cli
-      npm install
-      grunt
+      # apt-get install nodejs npm -y
+      # rm -rf /usr/local/bin/node
+      # sudo ln -s /usr/bin/nodejs /usr/local/bin/node
+      # cd /
+      # git clone https://github.com/ripple/ripple-client.git
+      # cd ripple-client/
+      # git checkout d74f95d
+      # npm install -g grunt-cli
+      # npm install
+      # grunt
     SCRIPT
 
     config.vm.provision :shell, :inline => $rippleclient
