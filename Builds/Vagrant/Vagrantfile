@@ -59,10 +59,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
     $rippleclient_one = <<-SCRIPT
       #!/bin/bash
-	  # we will be proposing the new ledger
-	  cp /src/Builds/Vagrant/init.start.d_rippled /etc/init.d/rippled
-	  chmod +x /etc/init.d/rippled
-	  flip -u /etc/init.d/rippled
       cp /src/Builds/Vagrant/rippled_one.cfg /etc/ripple/rippled.cfg
 	  cp /src/Builds/Vagrant/rippled_one.cfg /root/.config/ripple/rippled.cfg
 	  cp /src/Builds/Vagrant/rippled_one.cfg /home/vagrant/.config/ripple/rippled.cfg
