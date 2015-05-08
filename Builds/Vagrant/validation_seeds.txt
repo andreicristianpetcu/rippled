@@ -25,13 +25,3 @@ three:
       "validation_seed" : "shFqzXpz4dUjDXp4QjH2xtKuWVApQ"
    }
 }
-
-extra:
-{
-   "result" : {
-      "status" : "success",
-      "validation_key" : "HOWL DOE LOFT MAST MEAL APE MOON DOT ARCH FOUR FAWN AMOK",
-      "validation_public_key" : "n9LnXV5iK9L9XBnPez7M2dzhHEc71ZfufuWeLLoNAUvPjQqfUVkZ",
-      "validation_seed" : "shFqzXpz4dUjDXp4QjH2xtKuWVApQ"
-   }
-}
