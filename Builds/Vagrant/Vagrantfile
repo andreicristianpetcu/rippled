@@ -86,7 +86,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define "three", primary: true do |three|
     three.vm.network "private_network", ip: "192.168.50.6"
 	
-	$rippleclient_two = <<-SCRIPT
+	$rippleclient_three = <<-SCRIPT
       #!/bin/bash
       cp /src/Builds/Vagrant/rippled_three.cfg /etc/rippled.cfg
 	  flip -u /etc/ripple/rippled.cfg
