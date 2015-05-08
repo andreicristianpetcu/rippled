@@ -34,13 +34,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     apt-get install -y build-essential g++ python-dev autotools-dev libicu-dev build-essential libbz2-dev 
     apt-get install -y boost-all-dev
     cd /src/ && scons release
+	(service rippled stop &) || true
     cp /src/build/gcc.release/rippled /usr/local/sbin/rippled && strip /usr/local/sbin/rippled
 	# configs
 	mkdir -p /etc/ripple/
+	mkdir -p /root/.config/ripple/
+	mkdir -p /home/vagrant/.config/ripple/
     cp /src/Builds/Vagrant/rippled.cfg /etc/ripple/rippled.cfg
+	cp /src/Builds/Vagrant/rippled.cfg /root/.config/ripple/rippled.cfg
+	cp /src/Builds/Vagrant/rippled.cfg /home/vagrant/.config/ripple/rippled.cfg
 	cp /src/Builds/Vagrant/validators.txt /etc/ripple/validators.txt
 	# service
-	service rippled stop || true
 	cp /src/Builds/Vagrant/init.d_rippled /etc/init.d/rippled
     chmod +x /etc/init.d/rippled
 	flip -u /etc/init.d/rippled
