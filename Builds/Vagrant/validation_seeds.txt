@@ -25,3 +25,13 @@ three:
       "validation_seed" : "shFqzXpz4dUjDXp4QjH2xtKuWVApQ"
    }
 }
+
+extra:
+{
+   "result" : {
+      "status" : "success",
+      "validation_key" : "HALF FOWL TOLD SUD FLAG FIGS HIRE LEA JACK MUCH DEAL DENT",
+      "validation_public_key" : "n9LfxmkrdenV2V1B3D1j5DeBpMTU4nJdRTkQGTSav2baGBZJgGia",
+      "validation_seed" : "sn12CrGbgko99SpvGnxzAhr5JiSa9"
+   }
+}
