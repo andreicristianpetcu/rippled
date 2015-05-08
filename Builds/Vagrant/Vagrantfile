@@ -40,9 +40,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	mkdir -p /etc/ripple/
 	mkdir -p /root/.config/ripple/
 	mkdir -p /home/vagrant/.config/ripple/
-    cp /src/Builds/Vagrant/rippled.cfg /etc/ripple/rippled.cfg
-	cp /src/Builds/Vagrant/rippled.cfg /root/.config/ripple/rippled.cfg
-	cp /src/Builds/Vagrant/rippled.cfg /home/vagrant/.config/ripple/rippled.cfg
 	cp /src/Builds/Vagrant/validators.txt /etc/ripple/validators.txt
 	# service
 	cp /src/Builds/Vagrant/init.d_rippled /etc/init.d/rippled
@@ -63,6 +60,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     $rippleclient_one = <<-SCRIPT
       #!/bin/bash
       cp /src/Builds/Vagrant/rippled_one.cfg /etc/ripple/rippled.cfg
+	  cp /src/Builds/Vagrant/rippled_one.cfg /root/.config/ripple/rippled.cfg
+	  cp /src/Builds/Vagrant/rippled_one.cfg /home/vagrant/.config/ripple/rippled.cfg
 	  flip -u /etc/ripple/rippled.cfg
 	  service rippled start
     SCRIPT
@@ -76,6 +75,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	$rippleclient_two = <<-SCRIPT
       #!/bin/bash
       cp /src/Builds/Vagrant/rippled_two.cfg /etc/ripple/rippled.cfg
+	  cp /src/Builds/Vagrant/rippled_two.cfg /root/.config/ripple/rippled.cfg
+	  cp /src/Builds/Vagrant/rippled_two.cfg /home/vagrant/.config/ripple/rippled.cfg
 	  flip -u /etc/ripple/rippled.cfg
 	  service rippled start
     SCRIPT
@@ -88,7 +89,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	
 	$rippleclient_three = <<-SCRIPT
       #!/bin/bash
-      cp /src/Builds/Vagrant/rippled_three.cfg /etc/rippled.cfg
+      cp /src/Builds/Vagrant/rippled_three.cfg /etc/ripple/rippled.cfg
+	  cp /src/Builds/Vagrant/rippled_three.cfg /root/.config/ripple/rippled.cfg
+	  cp /src/Builds/Vagrant/rippled_three.cfg /home/vagrant/.config/ripple/rippled.cfg
 	  flip -u /etc/ripple/rippled.cfg
 	  service rippled start
     SCRIPT
