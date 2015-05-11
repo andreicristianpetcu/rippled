@@ -106,7 +106,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	  service rippled start
 	  
 	  # start client
-	  screen -dmS riweb bash -c 'npm start'
+	  npm install -g grunt-cli
+	  screen -dmS riweb bash -c 'grunt serve'
 	  
     SCRIPT
 
