@@ -172,7 +172,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
   
   # Let's have only 3 nodes for now
-  # config.vm.define "four", primary: true do |four|
+  # config.vm.define "four", autostart: false, primary: false do |four|
     # four.vm.network "private_network", ip: "192.168.50.7"
 	# $rippleclient_four = <<-SCRIPT
       # #!/bin/bash
@@ -200,7 +200,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # config.vm.provision :shell, :inline => $rippleclient_four
   # end
 
-  # config.vm.define "five", primary: true do |five|
+  # config.vm.define "five", autostart: false, primary: false do |five|
     # five.vm.network "private_network", ip: "192.168.50.8"
 	# $rippleclient_five = <<-SCRIPT
       # #!/bin/bash
