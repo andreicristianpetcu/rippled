@@ -19,8 +19,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # v.gui = true
   end
 
-  config.vm.synced_folder "../..", "/src"
-
+  config.vm.synced_folder "../..", "/src",
+    owner: "root", group: "root"
+	
   $script = <<-SCRIPT
     #!/bin/bash
 	# build
@@ -87,7 +88,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	  # install docker
 	  wget -qO- https://get.docker.com/ | sh
 	  # ssl for docker
-	  sudo apt-get install apparmor
+	  apt-get install apparmor
 	  service docker restart
 	  
 	  # mongoDB
