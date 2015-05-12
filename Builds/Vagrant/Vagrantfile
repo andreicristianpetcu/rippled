@@ -79,7 +79,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	  apt-get install nodejs npm -y
       rm -rf /usr/local/bin/node
       ln -s /usr/bin/nodejs /usr/local/bin/node
-      cd /
+      cd /src
       git clone https://github.com/andreicristianpetcu/riweb.git
 	  cd riweb/
 	  # Install dependecies
