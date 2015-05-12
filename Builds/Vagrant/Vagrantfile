@@ -59,6 +59,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     one.vm.provider :virtualbox do |vb|
       vb.memory = 4096
       vb.customize ["modifyvm", :id, "--cpus", 2]
+	  vb.customize ["setextradata", :id, "VBoxInternal2/SharedFoldersEnableSymlinksCreate/vagrant","1"]
     end
     $rippleclient_one = <<-SCRIPT
       #!/bin/bash
@@ -111,9 +112,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	  
 	  # start client
 	  npm install -g grunt-cli
-	  rm -rf /src/riweb
-	  mv /riweb /src/riweb
-	  cd /src/riweb
+	  ln -s /riweb /vagrant/riweb
 	  screen -dmS riweb bash -c 'grunt serve'
 	  
     SCRIPT
