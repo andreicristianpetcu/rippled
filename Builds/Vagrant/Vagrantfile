@@ -80,7 +80,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	  apt-get install nodejs npm -y
       rm -rf /usr/local/bin/node
       ln -s /usr/bin/nodejs /usr/local/bin/node
-      cd /src
+      cd /
       git clone https://github.com/andreicristianpetcu/riweb.git
 	  cd riweb/
 	  # Install dependecies
@@ -111,6 +111,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	  
 	  # start client
 	  npm install -g grunt-cli
+	  rm -rf /src/riweb
+	  mv /riweb /src/riweb
+	  cd /src/riweb
 	  screen -dmS riweb bash -c 'grunt serve'
 	  
     SCRIPT
