@@ -98,8 +98,8 @@ exports.ripplelib = {
   trusted:        true,
   servers: [
     {
-        host:    's1.ripple.com'
-      , port:    443
+        host:    'local.s1.ripple.com'
+      , port:    6006
       , secure:  false
     }
   ]
